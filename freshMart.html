@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRESH MART</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    nav {
+        border-bottom: 1px solid lightgrey;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 60px;
+        height: 70px;
+        position: fixed;
+        width: 100%;
+        background-color: white;
+        z-index:1;
+    }
+
+    .logo {
+        color: green;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .input-section {
+        width: 40%;
+    }
+
+    .input-section input {
+        width: 100%;
+        border-radius: 10px;
+        border: 1px solid lightgray;
+        padding: 14px;
+    }
+
+    .items {
+        display: flex;
+        width: 20%;
+        justify-content: space-between;
+    }
+
+    .items li {
+        list-style: none;
+    }
+
+    .items li:hover {
+        cursor: pointer;
+    }
+
+    .hero {
+        /* height: 50vh; */
+        background: linear-gradient(to right, #d8f3dc, #b7e4c7);
+        border-radius: 20px;
+        margin: 0 60px 20px 60px;
+        padding: 50px;
+        display: flex;
+        justify-content: space-between
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+    }
+
+    .hero p {
+        font-size: 18px;
+        color: rgb(70, 68, 68);
+        margin-bottom: 20px;
+    }
+
+    .hero button {
+        background-color: green;
+        color: white;
+        padding: 13px 30px;
+        border: none;
+        border-radius: 10px;
+        transition:1s ease-in-out 1s;
+        /* border:2px solid red; */
+    }
+
+    .hero button:hover {
+        cursor: pointer;
+        background-color: rgb(9, 250, 9);
+        border:2px solid red;
+        }
+
+    .cart {
+        font-size: 128px;
+    }
+
+    .cart img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+    }
+
+    .category {
+        padding: 20px 60px;
+        border-bottom: 1px solid lightgrey;
+        position: sticky;
+        top: 70px;
+        background-color: white;
+        z-index:1;
+        width:100%;
+    }
+
+    .category h1 {
+        margin-bottom: 20px;
+    }
+
+    .fruit-box {
+        height: 80px;
+        width: 80px;
+        border-radius: 50%;
+        background-color: #d8f3dc;
+        margin-bottom: 10px;
+    }
+
+    .cat-container {
+        display: flex;
+        width: 40%;
+        justify-content: space-between;
+        gap:30px;
+    }
+
+    .fruit-box {
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cat-container p {
+        text-align: center;
+    }
+
+    main {
+        padding-top: 70px;
+        background-color: rgb(243, 243, 243);
+    }
+
+    .products-container {
+        padding: 60px;
+    }
+
+    .item-card {
+        border: 1px solid lightgrey;
+        height: 250px;
+        width: 220px;
+        border-radius: 10px;
+        background-color: white;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .item-img {
+        background-color: rgb(215, 215, 215);
+        font-size: 70px;
+        height: 70%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        position:relative;
+    }
+
+    .item-card p {
+        font-size: 20px;
+    }
+
+    .item-name {
+        font-weight: 600;
+    }
+
+    .item-price {
+        color: green;
+        font-weight: 600;
+    }
+
+    .product-item-container {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        row-gap: 30px;
+    }
+
+    .products-container h1 {
+        margin-bottom: 20px;
+    }
+    .red {
+        background-color: red;
+        opacity: 0.8 ;
+        /* z-index: 200; */
+        /* position: relative; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+    }
+
+    .green {
+
+        height: 180px;
+        width: 180px;
+        background-color: green;
+        z-index: 1;
+        /* z-index: 1; */
+
+    }
+
+    .container{
+        height: 200px;
+        width: 200px;
+        border: 2px solid green;
+        margin: 50px 20px;
+        position: relative;
+    }
+
+    .box{
+        border: 1px solid black;
+        height: 100px ;
+        width: 100px;
+        position: absolute;
+    }
+    .one{
+        background-color: #b7e4c7;
+        height: 130px;
+        z-index: 2;
+    }
+
+    .two{
+        background-color: red;
+        z-index: 10;
+    }
+
+    footer {
+        background-color: black;
+        color: white;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    @media(max-width: 600px){
+        nav{
+            /* border:2px solid red; */
+            display:grid;
+            height:auto;
+            grid-template-areas:"logo navitems"
+                                "input input";
+            padding:10px;
+            row-gap:20px;
+        }
+        .logo{
+            grid-area:logo;
+        }
+        .input-section{
+            grid-area: input;
+            width:100%;
+        }
+        .items{
+            grid-area:navitems;
+            width:100%;
+            gap:10px;
+        }
+        /* .hero{
+            margin:40px 20px 20px 20px;
+            border-radius:30px;
+            display:flex;
+            flex-direction:column;
+            padding:40px 5px 10px 5px;
+        } */
+         .hero{
+            margin:45px 10px 10px 10px;
+            flex-direction:column;
+            padding:10px 20px;
+        }
+         .cart{
+            text-align:center;
+            font-size:100px;
+        }
+         .hero h1{
+            font-size:30px;
+        }
+        .category {
+            padding:20px;
+        }
+        .cat-container{
+            gap:10px;
+        }
+        .produts-container{
+            padding:10px;
+        }
+        .product-container h1{
+            padding: 10px 10px 10px 20px;
+        }
+        .product-item-container{
+            display:flex;
+            flex-direction:column;
+        }
+        .item-card{
+            width:100%;
+        }
+    }
+    .label{
+        background-color:red;
+        border:1px solid green;
+        font-size:18px;
+        color:white;
+        padding:3px 5px;
+        border-radius:4px;
+        border:none;
+        position:absolute;
+        top:-5px;
+        right:0px;
+    }
+</style>
+
+<body>
+    <nav>
+        <div class="logo">FreshMart</div>
+        <div class="input-section">
+            <input type="text" placeholder="Search fruits, vegetable...">
+        </div>
+        <div class="items">
+            <li>Home</li>
+            <li>Products</li>
+            <li>Cart</li>
+        </div>
+    </nav>
+
+
+    <main>
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Fresh groceries<br>delivered to you.</h1>
+                <p>Fruits, vegetables and daily essentials delivered fresh.</p>
+                <button>Shop Now</button>
+            </div>
+
+
+            <div class="cart">
+                🛒
+            </div>
+        </div>
+
+        <div class="category">
+            <h1>Shop by Category</h1>
+
+            <div class="cat-container">
+                <div>
+                    <div class="fruit-box">🍎</div>
+                    <p>Fruits</p>
+                </div>
+
+                <div>
+                    <div class="fruit-box">🥦</div>
+                    <p>Vegitables</p>
+                </div>
+                <div>
+                    <div class="fruit-box">🥛</div>
+                    <p>Dairy</p>
+                </div>
+                <div>
+                    <div class="fruit-box">🍞</div>
+                    <p>Bakery</p>
+                </div>
+                <div>
+                    <div class="fruit-box">🧃</div>
+                    <p>Drinks</p>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="products-container">
+            <h1>Popular Products</h1>
+            <div class="product-item-container">
+                <div class="item-card">
+                    <div class="item-img">
+                        🍎
+                        <div class="label">new</div> 
+                    </div>
+                    <p class="item-name">Fresh Apples</p>
+                    <p class="item-price">₹120 / kg</p>
+                </div>
+                <div class="item-card">
+                    <div class="item-img">
+                        🥦
+                        <div class="label">20% OFF</div>
+                    </div>
+                    <p class="item-name">Fresh Broccoli</p>
+                    <p class="item-price">₹800 / kg</p>
+                </div>
+                <div class="item-card">
+                    <div class="item-img">
+                        🥛 
+                        <div class="label">100% pure</div>
+                    </div>
+                    <p class="item-name">Fresh Milk</p>
+                    <p class="item-price">₹90 / litre</p>
+                </div>
+                <div class="item-card">
+                    <div class="item-img">
+                        🧃  
+                        <div class="label">sale</div>
+                    </div>
+                    <p class="item-name">Fresh Juices</p>
+                    <p class="item-price">₹120 / bottle</p>
+                </div>
+                <div class="item-card">
+                    <div class="item-img">
+                        🍌
+                        <div class="label">new</div>
+                    </div>
+                    <p class="item-name">Fresh Bananas</p>
+                    <p class="item-price">₹60 / dozen</p>
+                </div>
+                <div class="item-card">
+                    <div class="item-img">
+                        🥝
+                        <div class="label">20% OFF</div>
+                    </div>
+                    <p class="item-name">Fresh Kiwis</p>
+                    <p class="item-price">₹150 / kg</p>
+                </div>
+                <div class="item-card">
+                    <div class="item-img">
+                        🍇 
+                        <div class="label">10% OFF</div>
+                    </div>
+                    <p class="item-name">Fresh Grapes</p>
+                    <p class="item-price">₹200 / kg</p>
+                </div>
+                <div class="item-card">
+                    <div class="item-img">
+                        🫘
+                        <div class="label">10% OFF</div>
+                    </div>
+                    <p class="item-name">Fresh Beans</p>
+                    <p class="item-price">₹120 / kg</p>
+                </div>
+                <div class="item-card">
+                    <div class="item-img">
+                        🍪
+                        <div class="label">50% OFF</div>
+                    </div>
+                    <p class="item-name">Fresh Cookies</p>
+                    <p class="item-price">₹150 / packet</p>
+                </div>
+                <div class="item-card">
+                    <div class="item-img">
+                        🥕
+                        <div class="label">new</div>
+                    </div>
+                    <p class="item-name">Fresh Carrots</p>
+                    <p class="item-price">₹80 / kg</p>
+                </div>
+                <div class="item-card">
+                    <div class="item-img">
+                        🍄‍🟫
+                        <div class="label">new</div>
+                    </div>
+                    <p class="item-name">Fresh Mushrooms</p>
+                    <p class="item-price">₹100 / kg</p>
+                </div>
+                <div class="item-card">
+                    <div class="item-img">
+                        🍑
+                        <div class="label">new</div>
+                    </div>
+                    <p class="item-name">Fresh Peaches</p>
+                    <p class="item-price">₹180 / kg</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>FreshMart © 2026 | CSS Position Practice</p>
+    </footer>
+</body>
+
+</html>
